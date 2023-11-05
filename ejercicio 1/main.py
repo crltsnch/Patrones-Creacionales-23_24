@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 import pandas as pd
 
-data = pd.read_csv('data_final.csv', sep=';')
+data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';')
 
 class SamurAbstractFactory(ABC):
     """
@@ -80,21 +80,19 @@ class Mediana(AbstractAnalisis):
         return f"La mediana de la columna fecha es {mediana}"
 
 class Moda(AbstractAnalisis):
-    def useful_function_a(self) -> str:
-        return "The result of the product A2."
+    def calcular_moda(self):
+        moda = data["TIPO"].mode()
+        return f"La moda de la columna tipo es {moda}"
 
 
-class AbstractProductB(ABC):
+class AbstractVisualizacion(ABC):
     """
     Here's the the base interface of another product. All products can interact
     with each other, but proper interaction is possible only between products of
     the same concrete variant.
     """
     @abstractmethod
-    def useful_function_b(self) -> None:
-        """
-        Product B is able to do its own thing...
-        """
+    def mostrar_histograma(self):
         pass
 
     @abstractmethod
