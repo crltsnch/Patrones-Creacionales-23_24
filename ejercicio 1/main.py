@@ -16,7 +16,7 @@ class SamurAbstractFactory(ABC):
         pass
 
 
-class ConcreteFactory1(AbstractFactory):
+class ConcreteAnalisisFactory(SamurAbstractFactory):
     """
     Concrete Factories produce a family of products that belong to a single
     variant. The factory guarantees that resulting products are compatible. Note
