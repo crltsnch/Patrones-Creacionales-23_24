@@ -1,6 +1,8 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+import pandas as pd
 
+data = pd.read_csv('data_final.csv', sep=';')
 
 class SamurAbstractFactory(ABC):
     """
@@ -66,13 +68,17 @@ class AbstractAnalisis(ABC):
 Concrete Products are created by corresponding Concrete Factories.
 """
 
-class ConcreteProductA1(AbstractAnalisis):
-    def useful_function_a(self):
-        media = 
-        return "The result of the product A1."
+class Media(AbstractAnalisis):
+    def calcular_media(self):
+        media = data.groupby(data['FECHA'].dt.date)['ACTIVACIONES'].mean()
+        return f"La media de activaciones por dia es {media}" 
 
 
-class ConcreteProductA2(AbstractProductA):
+class Mediana(AbstractAnalisis):
+    def useful_function_a(self) -> str:
+        return "The result of the product A2."
+
+class Moda(AbstractAnalisis):
     def useful_function_a(self) -> str:
         return "The result of the product A2."
 
