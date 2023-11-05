@@ -125,7 +125,14 @@ class Histograma(AbstractVisualizacion):
 
 class GraficoDeBarras(AbstractVisualizacion):
     def mostrar_grafico_barras(self):
-        return "The result of the product B2."
+        activaciones_por_tipo = data['TIPO'].value_counts()
+        plt.figure(figsize=(12, 6))
+        plt.bar(activaciones_por_tipo.index, activaciones_por_tipo.values, width=0.8, align='center')
+        plt.xlabel('Tipo de Activación')
+        plt.ylabel('Número de Activaciones')
+        plt.title('Gráfico de Barras de Activaciones por Tipo')
+        plt.xticks(rotation=45)
+        return plt.show()
 
 
 
