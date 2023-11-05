@@ -27,8 +27,8 @@ class ConcreteAnalisisFactory(SamurAbstractFactory):
     def realizarAnalisis(self) -> AbstractAnalisis:
         return media(), mediana(), moda()
 
-    def create_product_b(self) -> AbstractProductB:
-        return ConcreteProductB1()
+    def mostrarVisualizacion(self) -> AbstractVisulizacion:
+        return None
 
 
 class ConcreteFactory2(AbstractFactory):
