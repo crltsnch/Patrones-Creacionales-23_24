@@ -75,8 +75,9 @@ class Media(AbstractAnalisis):
 
 
 class Mediana(AbstractAnalisis):
-    def useful_function_a(self) -> str:
-        return "The result of the product A2."
+    def calcular_mediana(self):
+        mediana = data["FECHA"].median()
+        return f"La mediana de la columna fecha es {mediana}"
 
 class Moda(AbstractAnalisis):
     def useful_function_a(self) -> str:
