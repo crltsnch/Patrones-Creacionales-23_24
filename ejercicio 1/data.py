@@ -29,7 +29,7 @@ data_final["TIPO"] = data["TIPO"].str[-1]
 #Fecha, fecha-fin y hota son object por lo que vamos a convertirlos a datetime. Vamos a convertir FECHA, FECHA-FIN y HORA a formato fecha
 data_final["FECHA"] = pd.to_datetime(data["FECHA"])
 data_final["FECHA-FIN"] = pd.to_datetime(data["FECHA-FIN"])
-data_final["HORA"] = pd.to_datetime(data["HORA"], format="%H:%M")
+data_final["HORA"] = pd.to_datetime(data["HORA"])
 
 
 print(data_final.head())
