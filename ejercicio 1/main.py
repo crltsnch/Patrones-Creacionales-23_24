@@ -28,9 +28,9 @@ class ConcreteAnalisisFactory(SamurAbstractFactory):
     """
 
     def realizarAnalisis(self) -> AbstractAnalisis:
-        return media(), mediana(), moda()
+        return Media(), Mediana(), Moda()
 
-    def mostrarVisualizacion(self) -> AbstractVisulizacion:
+    def mostrarVisualizacion(self) -> AbstractVisualizacion:
         return None
 
 
@@ -43,7 +43,7 @@ class ConcreteVisualizacionFactory(SamurAbstractFactory):
         return None
 
     def mostrarVisualizacion(self) -> AbstractVisualizacion:
-        return histograma(), diagramaDeBarras()
+        return Histograma(), GraficoDeBarras()
     
 
 class AbstractAnalisis(ABC):
@@ -133,7 +133,6 @@ class GraficoDeBarras(AbstractVisualizacion):
         plt.title('Gráfico de Barras de Activaciones por Tipo')
         plt.xticks(rotation=45)
         return plt.show()
-
 
 
 
