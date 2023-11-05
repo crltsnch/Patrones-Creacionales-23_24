@@ -43,14 +43,22 @@ class ConcreteVisualizacionFactory(SamurAbstractFactory):
         return histograma(), diagramaDeBarras()
     
 
-class AbstractProductA(ABC):
+class AbstractAnalisis(ABC):
     """
     Each distinct product of a product family should have a base interface. All
     variants of the product must implement this interface.
     """
 
     @abstractmethod
-    def useful_function_a(self) -> str:
+    def calcular_media(self):
+        pass
+
+    @abstractmethod
+    def calcular_mediana(self):
+        pass
+
+    @abstractmethod
+    def calcular_moda(self):
         pass
 
 
