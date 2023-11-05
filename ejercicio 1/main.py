@@ -24,8 +24,8 @@ class ConcreteAnalisisFactory(SamurAbstractFactory):
     product, while inside the method a concrete product is instantiated.
     """
 
-    def create_product_a(self) -> AbstractProductA:
-        return ConcreteProductA1()
+    def realizarAnalisis(self) -> AbstractAnalisis:
+        return media(), mediana(), moda()
 
     def create_product_b(self) -> AbstractProductB:
         return ConcreteProductB1()
