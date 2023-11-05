@@ -66,9 +66,9 @@ class AbstractAnalisis(ABC):
 Concrete Products are created by corresponding Concrete Factories.
 """
 
-
-class ConcreteProductA1(AbstractProductA):
-    def useful_function_a(self) -> str:
+class ConcreteProductA1(AbstractAnalisis):
+    def useful_function_a(self):
+        media = 
         return "The result of the product A1."
 
 
