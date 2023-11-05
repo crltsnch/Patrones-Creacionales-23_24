@@ -123,21 +123,14 @@ class Histograma(AbstractVisualizacion):
     """
 
 
-class ConcreteProductB2(AbstractProductB):
-    def useful_function_b(self) -> str:
+class GraficoDeBarras(AbstractVisualizacion):
+    def mostrar_grafico_barras(self):
         return "The result of the product B2."
 
-    def another_useful_function_b(self, collaborator: AbstractProductA):
-        """
-        The variant, Product B2, is only able to work correctly with the
-        variant, Product A2. Nevertheless, it accepts any instance of
-        AbstractProductA as an argument.
-        """
-        result = collaborator.useful_function_a()
-        return f"The result of the B2 collaborating with the ({result})"
 
 
-def client_code(factory: AbstractFactory) -> None:
+
+def client_code(factory: SamurAbstractFactory) -> None:
     """
     The client code works with factories and products only through abstract
     types: AbstractFactory and AbstractProduct. This lets you pass any factory
@@ -155,9 +148,9 @@ if __name__ == "__main__":
     The client code can work with any concrete factory class.
     """
     print("Client: Testing client code with the first factory type:")
-    client_code(ConcreteFactory1())
+    client_code(ConcreteAnalisisFactory())
 
     print("\n")
 
     print("Client: Testing the same client code with the second factory type:")
-    client_code(ConcreteFactory2())
+    client_code(ConcreteVisualizacionFactory())
