@@ -1,6 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 import pandas as pd
+import matplotlib.pyplot as plt
 
 data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';')
 
@@ -105,19 +106,21 @@ Concrete Products are created by corresponding Concrete Factories.
 """
 
 
-class ConcreteProductB1(AbstractProductB):
-    def useful_function_b(self) -> str:
-        return "The result of the product B1."
-
+class Histograma(AbstractVisualizacion):
+    def mostrar_histograma(self):
+        activaciones_por_dia = data['FECHA'].dt.date.value_counts().sort_index()
+        plt.figure(figsize=(12, 6))
+        plt.bar(activaciones_por_dia.index, activaciones_por_dia.values, width=0.8, align='center')
+        plt.xlabel('Fecha')
+        plt.ylabel('Número de Activaciones')
+        plt.title('Histograma de Activaciones por Día')
+        plt.xticks(rotation=45)
+        return plt.show()
     """
     The variant, Product B1, is only able to work correctly with the variant,
     Product A1. Nevertheless, it accepts any instance of AbstractProductA as an
     argument.
     """
-
-    def another_useful_function_b(self, collaborator: AbstractProductA) -> str:
-        result = collaborator.useful_function_a()
-        return f"The result of the B1 collaborating with the ({result})"
 
 
 class ConcreteProductB2(AbstractProductB):
