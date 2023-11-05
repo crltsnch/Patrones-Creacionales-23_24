@@ -36,4 +36,4 @@ print(data_final.head())
 #print(data_final.dtypes)
 
 #guardamos el data final en un csv en la carpeta data
-data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/ejercicio 1/data/data_final.csv", sep=";", index=False)
+data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/ejercicio 1/data/data_final.csv", sep=";", encoding='ISO-8859-1')
