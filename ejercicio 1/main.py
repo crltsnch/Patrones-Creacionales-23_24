@@ -71,7 +71,7 @@ Concrete Products are created by corresponding Concrete Factories.
 
 class Media(AbstractAnalisis):
     def calcular_media(self):
-        media = data.groupby(data['FECHA'].dt.date).mean()
+        media = data['FECHA'].mean()
         return f"La media de activaciones por dia es {media}" 
 
     def calcular_mediana(self):
@@ -95,8 +95,16 @@ class Mediana(AbstractAnalisis):
 class Moda(AbstractAnalisis):
     def calcular_moda(self):
         moda = data["TIPO"].mode()
-        return f"La moda de la columna tipo es {moda}"
-    
+
+        if len(moda) > 1:
+            #Si hay varios elementos en la moda, los separamos por comas
+            moda_str = ", ".join(moda)
+            return f"La moda de la columna tipo es: {moda_str}"
+        
+        else:
+            #Si solo hay un elemento en la moda, lo devolvemos como string
+            return f"La moda de la columna tipo es {moda.to_string(index=False)}"
+
     def calcular_media(self):
         pass
 
@@ -133,7 +141,7 @@ class Histograma(AbstractVisualizacion):
         plt.ylabel('Número de Activaciones')
         plt.title('Histograma de Activaciones por Día')
         plt.xticks(rotation=45)
-        return plt.show()
+        #return plt.show()
     """
     The variant, Product B1, is only able to work correctly with the variant,
     Product A1. Nevertheless, it accepts any instance of AbstractProductA as an
@@ -153,7 +161,7 @@ class GraficoDeBarras(AbstractVisualizacion):
         plt.ylabel('Número de Activaciones')
         plt.title('Gráfico de Barras de Activaciones por Tipo')
         plt.xticks(rotation=45)
-        return plt.show()
+        #return plt.show()
 
     def mostrar_histograma(self):
         pass
@@ -171,9 +179,9 @@ def client_code(factory: SamurAbstractFactory) -> None:
     
     if analisis is not None:
         for a in analisis:
-            print(f"{a.calcular_media()}", end="")
-            print(f"{a.calcular_mediana()}", end="")
-            print(f"{a.calcular_moda()}", end="")
+            print(f"{a.calcular_media()}\n", end="")
+            print(f"{a.calcular_mediana()}\n", end="")
+            print(f"{a.calcular_moda()}\n", end="")
     
     if visualizacion is not None:
         for v in visualizacion:
