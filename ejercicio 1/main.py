@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';')
+data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';', encoding='ISO-8859-1')
 
 class SamurAbstractFactory(ABC):
     """
@@ -74,11 +74,22 @@ class Media(AbstractAnalisis):
         media = data.groupby(data['FECHA'].dt.date)['ACTIVACIONES'].mean()
         return f"La media de activaciones por dia es {media}" 
 
+    def calcular_mediana(self):
+        pass
+
+    def calcular_moda(self):
+        pass
+
 
 class Mediana(AbstractAnalisis):
     def calcular_mediana(self):
         mediana = data["FECHA"].median()
         return f"La mediana de la columna fecha es {mediana}"
+    
+    def calcular_media(self):
+        pass
+
+    def 
 
 class Moda(AbstractAnalisis):
     def calcular_moda(self):
@@ -142,11 +153,14 @@ def client_code(factory: SamurAbstractFactory) -> None:
     types: AbstractFactory and AbstractProduct. This lets you pass any factory
     or product subclass to the client code without breaking it.
     """
-    product_a = factory.create_product_a()
-    product_b = factory.create_product_b()
+    analisis = factory.realizarAnalisis()
+    visualizacion = factory.mostrarVisualizacion()
 
-    print(f"{product_b.useful_function_b()}")
-    print(f"{product_b.another_useful_function_b(product_a)}", end="")
+    print(f"{visualizacion.mostrar_histograma()}")
+    print(f"{visualizacion.mostrar_grafico_barras()}")
+    print(f"{analisis.calcular_media()}", end="")
+    print(f"{analisis.calcular_mediana()}", end="")
+    print(f"{analisis.calcular_moda()}", end="")
 
 
 if __name__ == "__main__":
