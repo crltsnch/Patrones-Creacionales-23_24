@@ -1,0 +1,18 @@
+ ID-EVENTO;TITULO;GRATUITO;LARGA-DURACION;DIAS-SEMANA;FECHA;FECHA-FIN;HORA;TITULO-ACTIVIDAD;NOMBRE-INSTALACION;ACCESIBILIDAD-INSTALACION;CLASE-VIAL-INSTALACION;NOMBRE-VIA-INSTALACION;NUM-INSTALACION;DISTRITO-INSTALACION;BARRIO-INSTALACION;CODIGO-POSTAL-INSTALACION;TIPO
+12102925;Autoprotección para mujeres - Temporada 2023-2024;0;1;L,M,X,J,V,S,D;2023-10-08;2024-06-21 23:59:00;;;;;;;;;;;ActividadesDeportivas
+12140854;Carrera Go Fit;0;0;;2023-11-05;2023-11-05 23:59:00;1900-01-01 08:30:00;;Centro Deportivo Municipal Estadio de Atletismo Vallehermoso;1,5,6;CALLE;MELQUIADES ALVAREZ;19.0;CHAMBERI;VALLEHERMOSO;28003.0;CarrerasMaratones
+11441198;Ciclismo por Madrid;0;1;X,S,D;2023-09-01;2024-06-30 23:59:00;;Ciclismo por Madrid;;;;;;;;;Ciclismo
+12151373;Clinic Voleibol 2023;1;0;;2023-11-09;2023-11-09 23:59:00;;Primavera en Chamartín 2023;;;;;;;;;
+11234187;Correr por Madrid;0;1;L,M,X,J;2023-09-01;2024-06-30 23:59:00;;Correr por Madrid;;;;;;;;;ActividadesDeportivas
+12128700;Madrid Horse Week;0;1;L,M,X,J,V,S,D;2023-11-24;2023-11-26 23:59:00;;IFEMA Madrid Horse Week 2023;IFEMA MADRID, Institución Ferial de Madrid;1;AVENIDA;PARTENON;5.0;BARAJAS;CORRALEJOS;28042.0;Hipica
+11445886;Marcha nórdica;0;1;L,M,X,J;2023-09-01;2024-06-30 23:59:00;;Marcha nórdica por Madrid;;;;;;;;;ActividadesDeportivas
+11748362;Piragüismo por Madrid;0;1;V,S,D;2023-09-01;2024-07-31 23:59:00;;Piragüismo por Madrid;Parque Juan Carlos I;2;GLORIETA;S.A.R. DON JUAN DE BORBON Y BATTEMBERG, 5;5.0;BARAJAS;CORRALEJOS;28042.0;ActividadesDeportivas
+11445019;Triatlón por Madrid;0;1;V,S;2023-09-01;2024-06-30 23:59:00;;Triatlón por Madrid;Centro Deportivo Municipal Cerro Almodóvar;1;CALLE;CERRO DE ALMODOVAR;9.0;VILLA DE VALLECAS;SANTA EUGENIA;28007.0;Ciclismo
+12065968;Triatlón por Madrid;0;1;M,J;2023-09-01;2024-06-30 23:59:00;;Triatlón por Madrid;Centro Deportivo Municipal Barajas;1;AVENIDA;LOGROÑO;70.0;BARAJAS;ALAMEDA DE OSUNA;28042.0;Ciclismo
+11445194;Triatlón por Madrid;0;1;J,S;2023-09-01;2024-06-30 23:59:00;;Triatlón por Madrid;Centro Deportivo Municipal Casa de Campo;1;PASEO;PUERTA DEL ANGEL;7.0;MONCLOA-ARAVACA;CASA DE CAMPO;28011.0;Ciclismo
+12149680;VII Carrera Vuela Contra la Violencia de Género;0;0;;2023-11-26;2023-11-26 23:59:00;1900-01-01 09:00:00;;;;;;;;;;CarrerasMaratones
+12119377;Villaverde Activo - Taller de Zumba;1;1;L,M,X,J,V,S,D;2023-10-02;2023-12-17 23:59:00;;Villaverde Activo - Zumba;;;;;;;;;DanzaBaile
+12119380;Villaverde Activo - Talleres de Calistenia, Parkour y Skate;1;1;L,M,X,J,V,S,D;2023-10-02;2023-12-17 23:59:00;;Villaverde Activo - Deportes Urbanos: Calistenia, Parkour y Skate;;;;;;;;;ActividadesDeportivas
+12136658;XII Carrera Popular Madrid También Solidario;0;0;;2023-11-05;2023-11-05 23:59:00;1900-01-01 10:00:00;XII Carrera Popular Madrid También Solidario;Parque Forestal de Valdebebas-Felipe VI;2;AVENIDA;LAS FUERZAS ARMADAS;11.0;HORTALEZA;VALDEFUENTES;28055.0;CarrerasMaratones
+12142199;XIII Derbi de las Aficiones de Madrid;0;0;;2023-11-12;2023-11-12 23:59:00;1900-01-01 09:00:00;;;;;;;;;;CarrerasMaratones
+12144145;XV Carrera Ponle Freno;0;0;;2023-11-19;2023-11-19 23:59:00;1900-01-01 09:00:00;;;;;;;;;;CarrerasMaratones
