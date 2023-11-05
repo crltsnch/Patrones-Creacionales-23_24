@@ -96,13 +96,7 @@ class AbstractVisualizacion(ABC):
         pass
 
     @abstractmethod
-    def another_useful_function_b(self, collaborator: AbstractProductA) -> None:
-        """
-        ...but it also can collaborate with the ProductA.
-
-        The Abstract Factory makes sure that all products it creates are of the
-        same variant and thus, compatible.
-        """
+    def mostrar_grafico_barras(self):
         pass
 
 
