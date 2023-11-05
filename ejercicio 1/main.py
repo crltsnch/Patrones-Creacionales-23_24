@@ -31,17 +31,17 @@ class ConcreteAnalisisFactory(SamurAbstractFactory):
         return None
 
 
-class ConcreteFactory2(AbstractFactory):
+class ConcreteVisualizacionFactory(SamurAbstractFactory):
     """
     Each Concrete Factory has a corresponding product variant.
     """
 
-    def create_product_a(self) -> AbstractProductA:
-        return ConcreteProductA2()
+    def realizarAnalisis(self) -> AbstractAnalisis:
+        return None
 
-    def create_product_b(self) -> AbstractProductB:
-        return ConcreteProductB2()
-
+    def mostrarVisualizacion(self) -> AbstractVisualizacion:
+        return histograma(), diagramaDeBarras()
+    
 
 class AbstractProductA(ABC):
     """
