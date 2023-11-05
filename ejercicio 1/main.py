@@ -89,12 +89,19 @@ class Mediana(AbstractAnalisis):
     def calcular_media(self):
         pass
 
-    def 
+    def calcular_moda(self):
+        pass
 
 class Moda(AbstractAnalisis):
     def calcular_moda(self):
         moda = data["TIPO"].mode()
         return f"La moda de la columna tipo es {moda}"
+    
+    def calcular_media(self):
+        pass
+
+    def calcular_mediana(self):
+        pass
 
 
 class AbstractVisualizacion(ABC):
@@ -133,6 +140,9 @@ class Histograma(AbstractVisualizacion):
     argument.
     """
 
+    def mostrar_grafico_barras(self):
+        pass
+
 
 class GraficoDeBarras(AbstractVisualizacion):
     def mostrar_grafico_barras(self):
@@ -145,6 +155,8 @@ class GraficoDeBarras(AbstractVisualizacion):
         plt.xticks(rotation=45)
         return plt.show()
 
+    def mostrar_histograma(self):
+        pass
 
 
 def client_code(factory: SamurAbstractFactory) -> None:
