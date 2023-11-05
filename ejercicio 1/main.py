@@ -72,7 +72,7 @@ Concrete Products are created by corresponding Concrete Factories.
 class Media(AbstractAnalisis):
     def calcular_media(self):
         media = data['FECHA'].mean()
-        return f"La media de activaciones por dia es {media}" 
+        return f"La media de la fecha de inicio de las actividades es: {media}" 
 
     def calcular_mediana(self):
         pass
@@ -84,7 +84,7 @@ class Media(AbstractAnalisis):
 class Mediana(AbstractAnalisis):
     def calcular_mediana(self):
         mediana = data["FECHA"].median()
-        return f"La mediana de la columna fecha es {mediana}"
+        return f"La mediana de la columna fecha es: {mediana}"
     
     def calcular_media(self):
         pass
@@ -141,7 +141,7 @@ class Histograma(AbstractVisualizacion):
         plt.ylabel('Número de Activaciones')
         plt.title('Histograma de Activaciones por Día')
         plt.xticks(rotation=45)
-        #return plt.show()
+        return plt.show()
     """
     The variant, Product B1, is only able to work correctly with the variant,
     Product A1. Nevertheless, it accepts any instance of AbstractProductA as an
@@ -161,7 +161,7 @@ class GraficoDeBarras(AbstractVisualizacion):
         plt.ylabel('Número de Activaciones')
         plt.title('Gráfico de Barras de Activaciones por Tipo')
         plt.xticks(rotation=45)
-        #return plt.show()
+        return plt.show()
 
     def mostrar_histograma(self):
         pass
