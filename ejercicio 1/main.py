@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';', encoding='ISO-8859-1')
+data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';', encoding='ISO-8859-1', parse_dates=['FECHA'])
 
 class SamurAbstractFactory(ABC):
     """
@@ -71,7 +71,7 @@ Concrete Products are created by corresponding Concrete Factories.
 
 class Media(AbstractAnalisis):
     def calcular_media(self):
-        media = data.groupby(data['FECHA'].dt.date)['ACTIVACIONES'].mean()
+        media = data.groupby(data['FECHA'].dt.date).mean()
         return f"La media de activaciones por dia es {media}" 
 
     def calcular_mediana(self):
@@ -168,11 +168,17 @@ def client_code(factory: SamurAbstractFactory) -> None:
     analisis = factory.realizarAnalisis()
     visualizacion = factory.mostrarVisualizacion()
 
-    print(f"{visualizacion.mostrar_histograma()}")
-    print(f"{visualizacion.mostrar_grafico_barras()}")
-    print(f"{analisis.calcular_media()}", end="")
-    print(f"{analisis.calcular_mediana()}", end="")
-    print(f"{analisis.calcular_moda()}", end="")
+    
+    if analisis is not None:
+        for a in analisis:
+            print(f"{a.calcular_media()}", end="")
+            print(f"{a.calcular_mediana()}", end="")
+            print(f"{a.calcular_moda()}", end="")
+    
+    if visualizacion is not None:
+        for v in visualizacion:
+            print(f"{v.mostrar_histograma()}")
+            print(f"{v.mostrar_grafico_barras()}")
 
 
 if __name__ == "__main__":
