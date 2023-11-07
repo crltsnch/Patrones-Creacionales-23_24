@@ -71,7 +71,7 @@ Concrete Products are created by corresponding Concrete Factories.
 
 class Media(AbstractAnalisis):
     def calcular_media(self):
-        media = data['FECHA'].mean()
+        media = data.groupby(data['FECHA'].dt.date)['Unnamed: 0'].mean()
         return f"La media de la fecha de inicio de las actividades es: {media}" 
 
     def calcular_mediana(self):
@@ -114,7 +114,7 @@ class Moda(AbstractAnalisis):
 
 class AbstractVisualizacion(ABC):
     """
-    Here's the the base interface of another product. All products can interact
+    Here's the base interface of another product. All products can interact
     with each other, but proper interaction is possible only between products of
     the same concrete variant.
     """
@@ -142,11 +142,6 @@ class Histograma(AbstractVisualizacion):
         plt.title('Histograma de Activaciones por Día')
         plt.xticks(rotation=45)
         return plt.show()
-    """
-    The variant, Product B1, is only able to work correctly with the variant,
-    Product A1. Nevertheless, it accepts any instance of AbstractProductA as an
-    argument.
-    """
 
     def mostrar_grafico_barras(self):
         pass
