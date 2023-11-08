@@ -83,12 +83,12 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self._pizza.add("Salsa Base")
 
     def produce_ingredientes(self) -> None:
-        self._pizza.add("Ingrediente 1")
-        self._pizza.add("Ingrediente 2")
-        self._pizza.add("Ingrediente 3")
+        ingredientes = input("Ingrese los ingredientes (separados por comas): ")
+        self._pizza.add(f"Ingredientes: {ingredientes}")
     
     def produce_coccion(self) -> None:
-        self._pizza.add("Técnica de Cocción")
+        coccion = input("Ingrese la técnica de cocción: ")
+        self._pizza.add(f"Técnica de Cocción: {coccion}")
     
     def produce_maridaje(self) -> None:
         self._pizza.add("Maridaje")
@@ -164,15 +164,16 @@ if __name__ == "__main__":
     builder = ConcretePizzaBuilder()
     director.builder = builder
 
-    print("Standard full featured product: ")
+    print("Construir pizza: ")
     director.build_pizza()
     builder.pizza.list_parts()
 
-    print("\n")
-
     # Remember, the Builder pattern can be used without a Director class.
-    print("Custom product: ")
+'''    print("Custom product: ")
     builder.produce_masa()
     builder.produce_salsa()
     builder.produce_ingredientes()
-    builder.pizza.list_parts()
+    builder.produce_coccion()
+    builder.produce_maridaje()
+    builder.produce_extras()
+    builder.pizza.list_parts()'''
