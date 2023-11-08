@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Any
 import pandas as pd
 
-data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';', encoding='ISO-8859-1')
+data = pd.read_csv('ejercicio 2/data/data_final.csv', sep=';', encoding='ISO-8859-1')
 
 
 class PizzaBuilder(ABC):
@@ -87,10 +87,12 @@ class ConcretePizzaBuilder(PizzaBuilder):
             print("No tenemos esa masa, por favor elige otra")
             self.produce_masa()
         else:
-            self._pizza.add(f"Tipo de Masa: {masa}")
+            self._pizza.add(f"Tipo de Masa: {masa_escogida}")
 
         
     def produce_salsa(self) -> None:
+        salsas = data["salsa_base"].unique()
+
         self._pizza.add("Salsa Base")
 
     def produce_ingredientes(self) -> None:
