@@ -1,6 +1,9 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any
+import pandas as pd
+
+data = pd.read_csv('ejercicio 1/data/data_final.csv', sep=';', encoding='ISO-8859-1')
 
 
 class PizzaBuilder(ABC):
@@ -77,8 +80,16 @@ class ConcretePizzaBuilder(PizzaBuilder):
         return pizza
 
     def produce_masa(self) -> None:
-        self._pizza.add("Masa")
+        masas = data["tipo_masa"].unique()
+        masa_escogida = input(f"Elige el tipo de masa que deseas entre {masas}:")
 
+        if masa_escogida not in masas:
+            print("No tenemos esa masa, por favor elige otra")
+            self.produce_masa()
+        else:
+            self._pizza.add(f"Tipo de Masa: {masa}")
+
+        
     def produce_salsa(self) -> None:
         self._pizza.add("Salsa Base")
 
@@ -91,7 +102,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self._pizza.add(f"Técnica de Cocción: {coccion}")
     
     def produce_maridaje(self) -> None:
-        
+
         self._pizza.add("Maridaje")
     
     def produce_extras(self) -> None:
