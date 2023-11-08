@@ -125,8 +125,8 @@ class Director:
     optional, since the client can control builders directly.
     """
 
-    def __init__(self, builder:PizzaBuilder) -> None:
-        self._builder = builder
+    def __init__(self) -> None:
+        self._builder = None
 
     @property
     def builder(self) -> PizzaBuilder:
@@ -146,14 +146,13 @@ class Director:
     building steps.
     """
 
-    def build_minimal_viable_product(self) -> None:
-        self.builder.produce_part_a()
-
-    def build_full_featured_product(self) -> None:
-        self.builder.produce_part_a()
-        self.builder.produce_part_b()
-        self.builder.produce_part_c()
-
+    def build_pizza(self) -> None:
+        self.builder.produce_masa()
+        self.builder.produce_salsa()
+        self.builder.produce_ingredientes()
+        self.builder.produce_coccion()
+        self.builder.produce_maridaje()
+        self.builder.produce_extras()
 
 if __name__ == "__main__":
     """
@@ -163,7 +162,7 @@ if __name__ == "__main__":
     """
 
     director = Director()
-    builder = ConcreteBuilder1()
+    builder = ConcretePizzaBuilder()
     director.builder = builder
 
     print("Standard basic product: ")
