@@ -54,10 +54,10 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self.reset()
 
     def reset(self) -> None:
-        self._pizza = Pizza1()
+        self._pizza = Pizza()
 
     @property
-    def pizza(self) -> Pizza1:
+    def pizza(self) -> Pizza:
         """
         Concrete Builders are supposed to provide their own methods for
         retrieving results. That's because various types of builders may create
@@ -83,7 +83,9 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self._pizza.add("Salsa Base")
 
     def produce_ingredientes(self) -> None:
-        self._pizza.add("Ingredientes")
+        self._pizza.add("Ingrediente 1")
+        self._pizza.add("Ingrediente 2")
+        self._pizza.add("Ingrediente 3")
     
     def produce_coccion(self) -> None:
         self._pizza.add("Técnica de Cocción")
@@ -95,7 +97,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self._pizza.add("Extra y finalización")
 
 
-class Pizza1():
+class Pizza():
     """
     It makes sense to use the Builder pattern only when your products are quite
     complex and require extensive configuration.
@@ -123,8 +125,8 @@ class Director:
     optional, since the client can control builders directly.
     """
 
-    def __init__(self) -> None:
-        self._builder = None
+    def __init__(self, builder:PizzaBuilder) -> None:
+        self._builder = builder
 
     @property
     def builder(self) -> PizzaBuilder:
