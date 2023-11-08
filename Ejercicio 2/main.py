@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Any
 
 
-class Builder(ABC):
+class PizzaBuilder(ABC):
     """
     The Builder interface specifies methods for creating the different parts of
     the Product objects.
@@ -11,23 +11,35 @@ class Builder(ABC):
 
     @property
     @abstractmethod
-    def product(self) -> None:
+    def pizza(self) -> None:
         pass
 
     @abstractmethod
-    def produce_part_a(self) -> None:
+    def produce_masa(self) -> None:
         pass
 
     @abstractmethod
-    def produce_part_b(self) -> None:
+    def produce_salsa(self) -> None:
         pass
 
     @abstractmethod
-    def produce_part_c(self) -> None:
+    def produce_ingredientes(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_coccion(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_maridaje(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_extras(self) -> None:
         pass
 
 
-class ConcreteBuilder1(Builder):
+class ConcreteBuilder1(PizzaBuilder):
     """
     The Concrete Builder classes follow the Builder interface and provide
     specific implementations of the building steps. Your program may have
@@ -106,11 +118,11 @@ class Director:
         self._builder = None
 
     @property
-    def builder(self) -> Builder:
+    def builder(self) -> PizzaBuilder:
         return self._builder
 
     @builder.setter
-    def builder(self, builder: Builder) -> None:
+    def builder(self, builder: PizzaBuilder) -> None:
         """
         The Director works with any builder instance that the client code passes
         to it. This way, the client code may alter the final type of the newly
