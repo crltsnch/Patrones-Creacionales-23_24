@@ -1,0 +1,44 @@
+;pizza_id;order_date;order_time;tipo_masa;salsa_base;pizza_name;ingrediente1;ingrediente2;ingrediente3;ingrediente4;ingrediente5;ingrediente6;ingrediente7;ingrediente8
+0;hawaiian_m;1/1/2015;11:38:36;gruesa;tomate;The Hawaiian Pizza;Sliced Ham; Pineapple; Mozzarella Cheese;;;;;
+1;classic_dlx_m;1/1/2015;11:57:40;gruesa;tomate;The Classic Deluxe Pizza;Pepperoni; Mushrooms; Red Onions; Red Peppers; Bacon;;;
+2;five_cheese_l;1/1/2015;11:57:40;rellena de queso;pesto;The Five Cheese Pizza;Mozzarella Cheese; Provolone Cheese; Smoked Gouda Cheese; Romano Cheese; Blue Cheese; Garlic;;
+3;ital_supr_l;1/1/2015;11:57:40;rellena de queso;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+4;mexicana_m;1/1/2015;11:57:40;gruesa;pesto;The Mexicana Pizza;Tomatoes; Red Peppers; Jalapeno Peppers; Red Onions; Cilantro; Corn; Chipotle Sauce; Garlic
+5;thai_ckn_l;1/1/2015;11:57:40;rellena de queso;salsa picante;The Thai Chicken Pizza;Chicken; Pineapple; Tomatoes; Red Peppers; Thai Sweet Chilli Sauce;;;
+6;ital_supr_m;1/1/2015;12:12:28;gruesa;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+7;prsc_argla_l;1/1/2015;12:12:28;rellena de queso;salsa blanca;The Prosciutto and Arugula Pizza;Prosciutto di San Daniele; Arugula; Mozzarella Cheese;;;;;
+8;ital_supr_m;1/1/2015;12:16:31;gruesa;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+9;ital_supr_m;1/1/2015;12:21:30;gruesa;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+10;bbq_ckn_s;1/1/2015;12:29:36;fina;salsa picante;The Barbecue Chicken Pizza;Barbecued Chicken; Red Peppers; Green Peppers; Tomatoes; Red Onions; Barbecue Sauce;;
+11;the_greek_s;1/1/2015;12:29:36;fina;tomate;The Greek Pizza;Kalamata Olives; Feta Cheese; Tomatoes; Garlic; Beef Chuck Roast; Red Onions;;
+12;spinach_supr_s;1/1/2015;12:50:37;fina;salsa blanca;The Spinach Supreme Pizza;Spinach; Red Onions; Pepperoni; Tomatoes; Artichokes; Kalamata Olives; Garlic; Asiago Cheese
+13;spinach_supr_s;1/1/2015;12:51:37;fina;salsa blanca;The Spinach Supreme Pizza;Spinach; Red Onions; Pepperoni; Tomatoes; Artichokes; Kalamata Olives; Garlic; Asiago Cheese
+14;classic_dlx_s;1/1/2015;12:52:01;fina;tomate;The Classic Deluxe Pizza;Pepperoni; Mushrooms; Red Onions; Red Peppers; Bacon;;;
+15;green_garden_s;1/1/2015;12:52:01;fina;pesto;The Green Garden Pizza;Spinach; Mushrooms; Tomatoes; Green Olives; Feta Cheese;;;
+16;ital_cpcllo_l;1/1/2015;12:52:01;rellena de queso;tomate;The Italian Capocollo Pizza;Capocollo; Red Peppers; Tomatoes; Goat Cheese; Garlic; Oregano;;
+17;ital_supr_l;1/1/2015;12:52:01;rellena de queso;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+18;ital_supr_s;1/1/2015;12:52:01;fina;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+19;mexicana_s;1/1/2015;12:52:01;fina;pesto;The Mexicana Pizza;Tomatoes; Red Peppers; Jalapeno Peppers; Red Onions; Cilantro; Corn; Chipotle Sauce; Garlic
+20;spicy_ital_l;1/1/2015;12:52:01;rellena de queso;salsa blanca;The Spicy Italian Pizza;Capocollo; Tomatoes; Goat Cheese; Artichokes; Peperoncini verdi; Garlic;;
+21;spin_pesto_l;1/1/2015;12:52:01;rellena de queso;pesto;The Spinach Pesto Pizza;Spinach; Artichokes; Tomatoes; Sun-dried Tomatoes; Garlic; Pesto Sauce;;
+22;veggie_veg_s;1/1/2015;12:52:01;fina;pesto;The Vegetables + Vegetables Pizza;Mushrooms; Tomatoes; Red Peppers; Green Peppers; Red Onions; Zucchini; Spinach; Garlic
+23;mexicana_l;1/1/2015;13:00:15;rellena de queso;pesto;The Mexicana Pizza;Tomatoes; Red Peppers; Jalapeno Peppers; Red Onions; Cilantro; Corn; Chipotle Sauce; Garlic
+24;southw_ckn_l;1/1/2015;13:00:15;rellena de queso;salsa picante;The Southwest Chicken Pizza;Chicken; Tomatoes; Red Peppers; Red Onions; Jalapeno Peppers; Corn; Cilantro; Chipotle Sauce
+25;bbq_ckn_l;1/1/2015;13:02:59;rellena de queso;salsa picante;The Barbecue Chicken Pizza;Barbecued Chicken; Red Peppers; Green Peppers; Tomatoes; Red Onions; Barbecue Sauce;;
+26;cali_ckn_l;1/1/2015;13:02:59;rellena de queso;salsa picante;The California Chicken Pizza;Chicken; Artichoke; Spinach; Garlic; Jalapeno Peppers; Fontina Cheese; Gouda Cheese;
+27;cali_ckn_m;1/1/2015;13:02:59;gruesa;salsa picante;The California Chicken Pizza;Chicken; Artichoke; Spinach; Garlic; Jalapeno Peppers; Fontina Cheese; Gouda Cheese;
+28;pepperoni_l;1/1/2015;13:02:59;rellena de queso;tomate;The Pepperoni Pizza;Mozzarella Cheese; Pepperoni;;;;;;
+29;cali_ckn_l;1/1/2015;13:04:41;rellena de queso;salsa picante;The California Chicken Pizza;Chicken; Artichoke; Spinach; Garlic; Jalapeno Peppers; Fontina Cheese; Gouda Cheese;
+30;cali_ckn_s;1/1/2015;13:04:41;fina;salsa picante;The California Chicken Pizza;Chicken; Artichoke; Spinach; Garlic; Jalapeno Peppers; Fontina Cheese; Gouda Cheese;
+31;ckn_pesto_l;1/1/2015;13:04:41;rellena de queso;salsa picante;The Chicken Pesto Pizza;Chicken; Tomatoes; Red Peppers; Spinach; Garlic; Pesto Sauce;;
+32;ital_supr_m;1/1/2015;13:04:41;gruesa;salsa blanca;The Italian Supreme Pizza;Calabrese Salami; Capocollo; Tomatoes; Red Onions; Green Olives; Garlic;;
+33;mexicana_l;1/1/2015;13:11:55;rellena de queso;pesto;The Mexicana Pizza;Tomatoes; Red Peppers; Jalapeno Peppers; Red Onions; Cilantro; Corn; Chipotle Sauce; Garlic
+34;the_greek_s;1/1/2015;13:14:19;fina;tomate;The Greek Pizza;Kalamata Olives; Feta Cheese; Tomatoes; Garlic; Beef Chuck Roast; Red Onions;;
+35;big_meat_s;1/1/2015;13:33:00;fina;tomate;The Big Meat Pizza;Bacon; Pepperoni; Italian Sausage; Chorizo Sausage;;;;
+36;five_cheese_l;1/1/2015;13:33:00;rellena de queso;pesto;The Five Cheese Pizza;Mozzarella Cheese; Provolone Cheese; Smoked Gouda Cheese; Romano Cheese; Blue Cheese; Garlic;;
+37;soppressata_l;1/1/2015;13:33:00;rellena de queso;salsa blanca;The Soppressata Pizza;Soppressata Salami; Fontina Cheese; Mozzarella Cheese; Mushrooms; Garlic;;;
+38;the_greek_s;1/1/2015;13:33:00;fina;tomate;The Greek Pizza;Kalamata Olives; Feta Cheese; Tomatoes; Garlic; Beef Chuck Roast; Red Onions;;
+39;four_cheese_l;1/1/2015;13:34:07;rellena de queso;pesto;The Four Cheese Pizza;Ricotta Cheese; Gorgonzola Piccante Cheese; Mozzarella Cheese; Parmigiano Reggiano Cheese; Garlic;;;
+40;napolitana_s;1/1/2015;13:34:07;fina;tomate;The Napolitana Pizza;Tomatoes; Anchovies; Green Olives; Red Onions; Garlic;;;
+41;thai_ckn_l;1/1/2015;13:34:07;rellena de queso;salsa picante;The Thai Chicken Pizza;Chicken; Pineapple; Tomatoes; Red Peppers; Thai Sweet Chilli Sauce;;;
+42;bbq_ckn_l;1/1/2015;13:53:00;rellena de queso;salsa picante;The Barbecue Chicken Pizza;Barbecued Chicken; Red Peppers; Green Peppers; Tomatoes; Red Onions; Barbecue Sauce;;

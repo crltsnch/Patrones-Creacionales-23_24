@@ -32,13 +32,16 @@ data_final = pd.concat([data_final, ingredientes_divididos], axis=1)
 
 #Eliminar la columna pizza_ingredients
 data_final = data_final.drop("pizza_ingredients", axis=1)
-
 #print(data_final.head())
 
 
 #Ahora volvemos a comprobar si hay valores nulos
 #print(data_final.isnull().sum())
 #Hay valores nulos, pero no nos importa a la hora de recomendar ingredientes
+
+#que ingredientes hay en cada columna
+print(data_final["ingrediente1"].unique())
+
 
 '''Masas'''
 #Tipos de tamaños de pizza
@@ -63,3 +66,9 @@ data_final["pizza_category"] = data_final["pizza_category"].replace({"Classic": 
 #y cambiamos el nombre de la columna
 data_final = data_final.rename(columns={"pizza_category": "salsa_base"})
 #print(data_final["salsa_base"].head())
+
+
+
+'''------Exportar datos-------'''
+#guardamos el data final en un csv en la carpeta data
+data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/Ejercicio 2/data/data_final.csv", sep=";", encoding='ISO-8859-1')
