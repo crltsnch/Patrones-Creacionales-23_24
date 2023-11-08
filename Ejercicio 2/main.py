@@ -87,10 +87,11 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self._pizza.add(f"Ingredientes: {ingredientes}")
     
     def produce_coccion(self) -> None:
-        coccion = input("Ingrese la técnica de cocción: ")
+        coccion = input("Ingrese la técnica de cocción que deseas: ")
         self._pizza.add(f"Técnica de Cocción: {coccion}")
     
     def produce_maridaje(self) -> None:
+        
         self._pizza.add("Maridaje")
     
     def produce_extras(self) -> None:
