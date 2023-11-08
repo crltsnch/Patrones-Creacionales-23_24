@@ -39,7 +39,7 @@ class PizzaBuilder(ABC):
         pass
 
 
-class ConcreteBuilder1(PizzaBuilder):
+class ConcretePizzaBuilder(PizzaBuilder):
     """
     The Concrete Builder classes follow the Builder interface and provide
     specific implementations of the building steps. Your program may have
@@ -54,10 +54,10 @@ class ConcreteBuilder1(PizzaBuilder):
         self.reset()
 
     def reset(self) -> None:
-        self._product = Product1()
+        self._pizza = Pizza1()
 
     @property
-    def product(self) -> Product1:
+    def pizza(self) -> Pizza1:
         """
         Concrete Builders are supposed to provide their own methods for
         retrieving results. That's because various types of builders may create
@@ -72,9 +72,9 @@ class ConcreteBuilder1(PizzaBuilder):
         and you can make your builders wait for an explicit reset call from the
         client code before disposing of the previous result.
         """
-        product = self._product
+        pizza = self._pizza
         self.reset()
-        return product
+        return pizza
 
     def produce_part_a(self) -> None:
         self._product.add("PartA1")
@@ -86,7 +86,7 @@ class ConcreteBuilder1(PizzaBuilder):
         self._product.add("PartC1")
 
 
-class Product1():
+class Pizza1():
     """
     It makes sense to use the Builder pattern only when your products are quite
     complex and require extensive configuration.
