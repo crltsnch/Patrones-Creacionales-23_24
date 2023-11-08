@@ -76,14 +76,23 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self.reset()
         return pizza
 
-    def produce_part_a(self) -> None:
-        self._product.add("PartA1")
+    def produce_masa(self) -> None:
+        self._pizza.add("Masa")
 
-    def produce_part_b(self) -> None:
-        self._product.add("PartB1")
+    def produce_salsa(self) -> None:
+        self._pizza.add("Salsa Base")
 
-    def produce_part_c(self) -> None:
-        self._product.add("PartC1")
+    def produce_ingredientes(self) -> None:
+        self._pizza.add("Ingredientes")
+    
+    def produce_coccion(self) -> None:
+        self._pizza.add("Técnica de Cocción")
+    
+    def produce_maridaje(self) -> None:
+        self._pizza.add("Maridaje")
+    
+    def produce_extras(self) -> None:
+        self._pizza.add("Extra y finalización")
 
 
 class Pizza1():
