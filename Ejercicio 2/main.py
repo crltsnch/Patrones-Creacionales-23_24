@@ -160,14 +160,13 @@ if __name__ == "__main__":
     initiates the construction process. The end result is retrieved from the
     builder object.
     """
-
     director = Director()
     builder = ConcretePizzaBuilder()
     director.builder = builder
 
     print("Standard full featured product: ")
     director.build_pizza()
-    builder.product.list_parts()
+    builder.pizza.list_parts()
 
     print("\n")
 
@@ -175,4 +174,5 @@ if __name__ == "__main__":
     print("Custom product: ")
     builder.produce_masa()
     builder.produce_salsa()
-    builder.product.list_parts()
+    builder.produce_ingredientes()
+    builder.pizza.list_parts()
