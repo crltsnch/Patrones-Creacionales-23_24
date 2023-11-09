@@ -101,7 +101,17 @@ class ConcretePizzaBuilder(PizzaBuilder):
         
 
     def produce_ingredientes(self) -> None:
-        ingrediente1 = input("Ingrese un ingrediente que desees (separados por comas): ")
+        ingredientes = data["ingrediente1"].unique()
+        ingrediente1 = input(f"Ingrese un ingrediente que desees de {ingredientes}: ")
+        if ingrediente1 not in ingredientes:
+            print("No tenemos ese ingrediente, por favor elige otro")
+            self.produce_ingredientes()
+        else:
+            self._pizza.add(f"Ingredientes: {ingrediente1}")
+
+        
+
+
         self._pizza.add(f"Ingredientes: {ingredientes}")
     
     def produce_coccion(self) -> None:
