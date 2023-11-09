@@ -88,7 +88,6 @@ class ConcretePizzaBuilder(PizzaBuilder):
             self.produce_masa()
         else:
             self._pizza.add(f"Tipo de Masa: {masa_escogida}")
-            return masa_escogida
 
         
     def produce_salsa(self) -> None:
@@ -156,8 +155,8 @@ class ConcretePizzaBuilder(PizzaBuilder):
             else:
                 self._pizza.add(f"Técnica de Cocción: {coccion}")
     
-    def produce_maridaje(self) -> None:
-
+    def produce_maridaje(self, salsa_escogida: str) -> None:
+        maridajes = ["Garnacha", "Chardonnay"]
         self._pizza.add("Maridaje")
     
     def produce_extras(self) -> None:
@@ -215,10 +214,10 @@ class Director:
 
     def build_pizza(self) -> None:
         masa_escogida = self.builder.produce_masa()
-        self.builder.produce_salsa()
+        salsa_escogida = self.builder.produce_salsa()
         self.builder.produce_ingredientes()
         self.builder.produce_coccion(masa_escogida)    #le pasamos la masa escogida para hacer uso de en la funcion coccion para que nos recomiende la técnica de cocción
-        self.builder.produce_maridaje()
+        self.builder.produce_maridaje(salsa_escogida)
         self.builder.produce_extras()
 
 if __name__ == "__main__":
