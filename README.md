@@ -450,3 +450,423 @@ data_final = data_final.rename(columns={"pizza_category": "salsa_base"})
 #guardamos el data final en un csv en la carpeta data
 data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/Ejercicio 2/data/data_final.csv", sep=";", encoding='utf-8', index=True)
 ```
+
+Lo segundo será crear nuestro patron Builder que cree las pizzas.
+
+#### pizzabuilder.py
+En este ficheor crearemos nuestra clase abstracta PizzaBuilder con las partes (metodos) que tendra la pizza.
+```
+from __future__ import annotations
+from abc import ABC, abstractmethod
+
+
+class PizzaBuilder(ABC):
+    """
+    The Builder interface specifies methods for creating the different parts of
+    the Product objects.
+    """
+
+    @property
+    @abstractmethod
+    def pizza(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_masa(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_salsa(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_ingredientes(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_coccion(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_presentacion(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_maridaje(self) -> None:
+        pass
+
+    @abstractmethod
+    def produce_extras(self) -> None:
+        pass
+```
+
+#### concretepizza.py
+Aqui crearemos la pizza concreta.
+```
+from __future__ import annotations
+from pizzabuilder import PizzaBuilder
+from pizza import Pizza
+import pandas as pd
+
+data = pd.read_csv('ejercicio 2/data/data_final.csv', sep=';', encoding='ISO-8859-1')
+
+
+class ConcretePizzaBuilder(PizzaBuilder):
+    """
+    The Concrete Builder classes follow the Builder interface and provide
+    specific implementations of the building steps. Your program may have
+    several variations of Builders, implemented differently.
+    """
+
+    def __init__(self) -> None:
+        """
+        A fresh builder instance should contain a blank product object, which is
+        used in further assembly.
+        """
+        self.reset()
+
+    def reset(self) -> None:
+        self._pizza = Pizza()
+
+    @property
+    def pizza(self) -> Pizza:
+        """
+        Concrete Builders are supposed to provide their own methods for
+        retrieving results. That's because various types of builders may create
+        entirely different products that don't follow the same interface.
+        Therefore, such methods cannot be declared in the base Builder interface
+        (at least in a statically typed programming language).
+
+        Usually, after returning the end result to the client, a builder
+        instance is expected to be ready to start producing another product.
+        That's why it's a usual practice to call the reset method at the end of
+        the `getProduct` method body. However, this behavior is not mandatory,
+        and you can make your builders wait for an explicit reset call from the
+        client code before disposing of the previous result.
+        """
+        pizza = self._pizza
+        self.reset()
+        return pizza
+
+    def produce_masa(self) -> None:
+        masas = data["tipo_masa"].unique()
+        masa_escogida = input(f"Elige el tipo de masa que deseas entre {masas}:")
+
+        if masa_escogida not in masas:
+            print("No tenemos esa masa, por favor elige otra")
+            self.produce_masa()
+        else:
+            self._pizza.add(masa_escogida)
+            return masa_escogida
+
+        
+    def produce_salsa(self) -> None:
+        salsas = data["salsa_base"].unique()
+        salsa_escogida = input(f"Elige el tipo de salsa que deseas entre {salsas}:")
+
+        if salsa_escogida not in salsas:
+            print("No tenemos esa salsa, por favor elige otra")
+            self.produce_salsa()
+        else:
+            self._pizza.add(salsa_escogida)
+            return salsa_escogida
+
+    def produce_ingredientes(self) -> None:
+        ingredientes = []
+
+        ingredientes1 = data["ingrediente1"].unique()
+        ingrediente1 = input(f"Ingrese un ingrediente que desees de {ingredientes1}: ")
+
+        if ingrediente1 not in ingredientes1:
+            print("No tenemos ese ingrediente, por favor elige otro")
+            self.produce_ingredientes()
+        else:
+            ingredientes.append(ingrediente1)
+            
+
+        #queremos pedile 3 ingredientes mas, recomendandole los ingredientes de las mismas filas que el ingrediente1 escogido
+        ingredientes2 = data[data["ingrediente1"] == ingrediente1]["ingrediente2"].unique()
+        ingrediente2 = input(f"Ingrese el segundo ingrediente que desees, te recomendamos {ingredientes2}: ")
+        ingredientes.append(ingrediente2)
+
+        ingredientes3 = data[data["ingrediente1"] == ingrediente1]["ingrediente3"].unique()
+        ingredientes3_sin_nan = [ingrediente for ingrediente in ingredientes3 if not pd.isna(ingrediente)]
+        ingrediente3 = input(f"Ingrese el tercer ingrediente que desees, te recomendamos {ingredientes3_sin_nan}: ")
+        ingredientes.append(ingrediente3)
+
+        ingredientes4 = data[data["ingrediente1"] == ingrediente1]["ingrediente4"].unique()
+        ingredientes4_sin_nan = [ingrediente for ingrediente in ingredientes4 if not pd.isna(ingrediente)]
+        ingrediente4 = input(f"Ingrese el cuarto ingrediente que desees, te recomendamos {ingredientes4_sin_nan}: ")
+        ingredientes.append(ingrediente4)
+
+        self._pizza.add(f"{ingredientes}")
+    
+    def produce_coccion(self, masa_escogida: str) -> None:
+        tecnicas = ["horno de leña", "horno convencional", "parrilla"]
+
+        if masa_escogida == "fina":
+            coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa fina, te recomendamos horno de leña: ")
+
+            if coccion not in tecnicas:
+                print("No tenemos esa técnica de cocción, por favor elige otra")
+                self.produce_coccion(masa_escogida)
+            else:
+                self._pizza.add(coccion)
+
+        elif masa_escogida == "gruesa" or masa_escogida == "rellena de queso":
+            coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa gruesa, te recomendamos parrilla: ")
+
+            if coccion not in tecnicas:
+                print("No tenemos esa técnica de cocción, por favor elige otra")
+                self.produce_coccion(masa_escogida)
+            else:
+                self._pizza.add(coccion)
+        
+
+        elif masa_escogida == "integral" or masa_escogida == "sin gluten":
+            coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegigo masa {masa_escogida} te recomendamos horno convencional: ")
+
+            if coccion not in tecnicas:
+                print("No tenemos esa técnica de cocción, por favor elige otra")
+                self.produce_coccion(masa_escogida)
+            else:
+                self._pizza.add(coccion)
+    
+    def produce_presentacion(self) -> None:
+        presentaciones = ["estilo clasico", "estilo mediterraneo", "estilo moderno"]
+        presentacion = input(f"Ingrese la presentación que deseas {presentaciones}: ")
+
+        if presentacion not in presentaciones:
+            print("No tenemos esa presentación, por favor elige otra")
+            self.produce_presentacion()
+        else:
+            self._pizza.add(presentacion)
+
+    def produce_maridaje(self, salsa_escogida: str) -> None:
+        maridajes = ["Garnacha", "Chardonnay", "Viura", "Albariño", "cerveza de trigo", "cerveza rubia", "cerveza tostada", "cerveza con limon", "limonada casera", "agua con gas", "agua", "cola", "leche"]
+        print(f"Nuestra seleccion de maridajes es {maridajes}")
+
+        if salsa_escogida == "tomate":
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa de tomate, te recomendamos un Garnacha, cerveza de trigo o nuestra limonada casera: ")
+
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(maridaje)
+
+        elif salsa_escogida == "pesto":
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa de pesto, te recomendamos un Chardonnay, una cerveza rubia o agua con gas: ")
+
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(maridaje)
+
+        elif salsa_escogida == "salsa blanca":
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa blanca, te recomendamos un Viura, una cerveza tostada o cola: ")
+
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(maridaje)
+        
+        else:
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa picante, te recomendamos un Albariño, una cerveza con limon o leche: ")
+
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(maridaje)
+
+    
+    def produce_extras(self) -> None:
+        finalizacion = ["caviar", "trufa", "foie", "aceite picante", "rucula"]
+        extra = input(f"Ingrese el extra que deseas {finalizacion}: ")
+
+        if extra not in finalizacion:
+            print("No tenemos ese extra, por favor elige otro")
+            self.produce_extras()
+        else:
+            self._pizza.add(extra)
+```
+
+#### pizza.py
+Aquí se construye la pizza
+```
+from typing import Any
+
+class Pizza():
+    """
+    It makes sense to use the Builder pattern only when your products are quite
+    complex and require extensive configuration.
+
+    Unlike in other creational patterns, different concrete builders can produce
+    unrelated products. In other words, results of various builders may not
+    always follow the same interface.
+    """
+
+    def __init__(self) -> None:
+        self.parts = []
+
+    def add(self, part: Any) -> None:
+        self.parts.append(part)
+
+    def list_parts(self) -> None:
+        print(f"Product parts: {', '.join(self.parts)}", end="")
+```
+
+#### director.py
+La clase Director cumple un papel importante en la implementación del patrón Builder. Su principal función es orquestar el proceso de construcción de un objeto Pizza utilizando un objeto PizzaBuilder
+```
+from pizzabuilder import PizzaBuilder
+
+
+class Director:
+    """
+    The Director is only responsible for executing the building steps in a
+    particular sequence. It is helpful when producing products according to a
+    specific order or configuration. Strictly speaking, the Director class is
+    optional, since the client can control builders directly.
+    """
+
+    def __init__(self) -> None:
+        self._builder = None
+
+    @property
+    def builder(self) -> PizzaBuilder:
+        return self._builder
+
+    @builder.setter
+    def builder(self, builder: PizzaBuilder) -> None:
+        """
+        The Director works with any builder instance that the client code passes
+        to it. This way, the client code may alter the final type of the newly
+        assembled product.
+        """
+        self._builder = builder
+
+    """
+    The Director can construct several product variations using the same
+    building steps.
+    """
+
+    def build_pizza(self) -> None:
+        masa_escogida = self.builder.produce_masa()
+        salsa_escogida = self.builder.produce_salsa()
+        self.builder.produce_ingredientes()
+        self.builder.produce_coccion(masa_escogida)   #le pasamos la masa escogida para hacer uso en la funcion coccion para que nos recomiende la técnica de cocción
+        self.builder.produce_presentacion()
+        self.builder.produce_maridaje(salsa_escogida)  #le pasamos la salsa escogida para hacer uso en la funcion maridaje de la salsa base escogida
+        self.builder.produce_extras()
+```
+
+#### run.py
+Por último, esto ejecutará nuestro programa. Pedira al usuario que ingrese lo que quiere para cada parte de la pizza e imprimira la pizza construída
+```
+from director import Director
+from concretepizza import ConcretePizzaBuilder
+from guardarpizzas import guardar_pizza_personalizada
+
+if __name__ == "__main__":
+    """
+    The client code creates a builder object, passes it to the director and then
+    initiates the construction process. The end result is retrieved from the
+    builder object.
+    """
+    director = Director()
+    builder = ConcretePizzaBuilder()
+    director.builder = builder
+
+    print("Construir pizza: ")
+    director.build_pizza()
+    pizza_personalizada = builder.pizza
+    pizza_personalizada.list_parts()
+    
+    guardar_pizza_personalizada(pizza_personalizada.parts)
+
+    # Remember, the Builder pattern can be used without a Director class.
+'''    print("Custom product: ")
+    builder.produce_masa()
+    builder.produce_salsa()
+    builder.produce_ingredientes()
+    builder.produce_coccion()
+    builder.produce_presentacion()
+    builder.produce_maridaje()
+    builder.produce_extras()
+    builder.pizza.list_parts()'''
+```
+
+Por último hemos creado una función que guarde las pizzas que el cliente crea en un csv por si proximamente quiere hacer alguna modificacion a alguna de esas pizzas, quiere volver a pedirla etc.
+
+#### guardarpizzas.py
+En esta funcion creamos el csv ("pizzas.csv") que va a guardar las pizzas, implementando esta función también en el run.py
+```
+'''Crear una funcion que guarde las pizzas concretas creadas en un archivo .csv con cada parte de la pizza'''
+import csv
+import os
+
+def guardar_pizza_personalizada(pizza_personalizada):
+    carpeta_ejercicio2 = 'Ejercicio 2'
+    ruta_archivo = os.path.join(carpeta_ejercicio2, 'pizzas.csv')
+
+    with open(ruta_archivo, 'a', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=["masa", "salsabase", "ingredientes", "coccion", "presentacion", "maridaje", "extras"], delimiter=';')
+
+        if file.tell() == 0:
+            writer.writeheader()
+
+
+        datos = {
+            "masa": pizza_personalizada[0],
+            "salsabase": pizza_personalizada[1],
+            "ingredientes": pizza_personalizada[2],
+            "coccion": pizza_personalizada[3],
+            "presentacion": pizza_personalizada[4],
+            "maridaje": pizza_personalizada[5],
+            "extras": pizza_personalizada[6]
+        }
+
+        writer.writerow(datos)
+
+    print("\nPizza guardada con éxito")
+```
+
+#### leerpizzas.py
+En este archivos creamos dos funciones una para leer las pizzas del csv anterior y otra para reconstruir la pizza y asi en un futuro poder hacer algun cambio o por si quiere volver a pedirla.
+
+```
+import csv
+
+def leer_pizzas_desde_csv(archivo_csv):
+    pizzas = []
+    with open(archivo_csv, 'r', newline='') as file:
+        reader = csv.DictReader(file, delimiter=';')
+        for row in reader:
+            pizzas.append(row)
+    return pizzas
+
+def reconstruir_pizza(datos):
+    pizza = f"Tipo de Masa: {datos['masa']}\n"
+    pizza += f"Salsa Base: {datos['salsabase']}\n"
+    pizza += f"Ingredientes: {datos['ingredientes']}\n"
+    pizza += f"Técnica de Cocción: {datos['coccion']}\n"
+    pizza += f"Presentación: {datos['presentacion']}\n"
+    pizza += f"Maridaje: {datos['maridaje']}\n"
+    pizza += f"Extra y finalización: {datos['extras']}\n"
+    return pizza
+
+if __name__ == "__main__":
+    archivo_csv = 'Ejercicio 2/pizzas.csv'
+
+    # Leer datos del archivo CSV
+    pizzas = leer_pizzas_desde_csv(archivo_csv)
+
+    # Reconstruir y mostrar cada pizza
+    for pizza in pizzas:
+        pizza_reconstruida = reconstruir_pizza(pizza)
+        print(pizza_reconstruida)
+```
