@@ -19,7 +19,7 @@ def reconstruir_pizza(datos):
     return pizza
 
 if __name__ == "__main__":
-    archivo_csv = 'ejercicio2/pizzas.csv'
+    archivo_csv = 'Ejercicio 2/pizzas.csv'
 
     # Leer datos del archivo CSV
     pizzas = leer_pizzas_desde_csv(archivo_csv)
