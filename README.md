@@ -874,3 +874,9 @@ if __name__ == "__main__":
         pizza_reconstruida = reconstruir_pizza(pizza)
         print(pizza_reconstruida)
 ```
+
+Al ejecutar el problema nos pedirá las partes de la pizza que quiera el cliente:
+<img width="1223" alt="Captura de pantalla 2023-11-09 a las 22 44 22" src="https://github.com/crltsnch/Patrones-Creacionales-23_24/assets/91721777/efdf9a79-e063-494c-99f2-1b3cd05657c3">
+
+Y la pizza se nos guardará en el csv:
+<img width="1440" alt="Captura de pantalla 2023-11-09 a las 22 43 20" src="https://github.com/crltsnch/Patrones-Creacionales-23_24/assets/91721777/d6c60c3a-02cc-4681-81f0-64d36962d089">
