@@ -194,7 +194,13 @@ class ConcretePizzaBuilder(PizzaBuilder):
 
     
     def produce_extras(self) -> None:
-        self._pizza.add("Extra y finalización")
+        finalizacion = ["caviar", "trufa", "foie", "aceite picante", "rucula"]
+        extra = input(f"Ingrese el extra que deseas {finalizacion}: ")
+        if extra not in finalizacion:
+            print("No tenemos ese extra, por favor elige otro")
+            self.produce_extras()
+        else:
+            self._pizza.add(f"Extra y finalización: {extra}")
 
 
 class Pizza():
