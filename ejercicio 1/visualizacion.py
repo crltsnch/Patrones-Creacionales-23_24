@@ -35,7 +35,7 @@ class Histograma(AbstractVisualizacion):
         plt.ylabel('Número de Activaciones')
         plt.title('Histograma de Activaciones por Día')
         plt.xticks(rotation=45)
-        return plt.show()
+        plt.show()
 
     def mostrar_grafico_barras(self):
         pass
@@ -50,7 +50,7 @@ class GraficoDeBarras(AbstractVisualizacion):
         plt.ylabel('Número de Activaciones')
         plt.title('Gráfico de Barras de Activaciones por Tipo')
         plt.xticks(rotation=45)
-        return plt.show()
+        plt.show()
 
     def mostrar_histograma(self):
         pass

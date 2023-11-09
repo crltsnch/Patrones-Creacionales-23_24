@@ -18,5 +18,5 @@ def client_code(factory: SamurAbstractFactory) -> None:
     
     if visualizacion is not None:
         for v in visualizacion:
-            print(f"{v.mostrar_histograma()}")
-            print(f"{v.mostrar_grafico_barras()}")
+            v.mostrar_histograma()
+            v.mostrar_grafico_barras()
