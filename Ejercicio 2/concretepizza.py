@@ -58,7 +58,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
     def produce_salsa(self) -> None:
         salsas = data["salsa_base"].unique()
         salsa_escogida = input(f"Elige el tipo de salsa que deseas entre {salsas}:")
-        
+
         if salsa_escogida not in salsas:
             print("No tenemos esa salsa, por favor elige otra")
             self.produce_salsa()
@@ -108,7 +108,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             else:
                 self._pizza.add(f"Técnica de Cocción: {coccion}")
 
-        elif masa_escogida == "gruesa":
+        elif masa_escogida == "gruesa" or masa_escogida == "rellena de queso":
             coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa gruesa, te recomendamos parrilla: ")
 
             if coccion not in tecnicas:
@@ -116,6 +116,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 self.produce_coccion(masa_escogida)
             else:
                 self._pizza.add(f"Técnica de Cocción: {coccion}")
+        
 
         elif masa_escogida == "integral" or masa_escogida == "sin gluten":
             coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegigo masa {masa_escogida} te recomendamos horno convencional: ")

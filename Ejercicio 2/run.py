@@ -1,5 +1,6 @@
 from director import Director
 from concretepizza import ConcretePizzaBuilder
+from guardarpizzas import guardar_pizza_personalizada
 
 if __name__ == "__main__":
     """
@@ -13,7 +14,10 @@ if __name__ == "__main__":
 
     print("Construir pizza: ")
     director.build_pizza()
-    builder.pizza.list_parts()
+    pizza_personalizada = builder.pizza
+    pizza_personalizada.list_parts()
+    
+    guardar_pizza_personalizada(pizza_personalizada.parts)
 
     # Remember, the Builder pattern can be used without a Director class.
 '''    print("Custom product: ")
