@@ -49,10 +49,10 @@ data_final = data_final.drop("pizza_ingredients", axis=1)
 
 #Ahora vamos a transformar la columna tamaño por tipos de masas, de esta manera tendremos que el tamaño S es una masa fina, el tamaño M es una masa gruesa y el tamaño L es una masa rellena de queso
 data_final["pizza_size"] = data_final["pizza_size"].replace({"S": "fina", "M": "gruesa", "L": "rellena de queso", "XL": "integral", "XXL": "sin gluten"})
-print(data_final["pizza_size"].unique())
+#print(data_final["pizza_size"].unique())
 
 #imprimeme solo las filas que tengas masa integral
-print(data_final[data_final["pizza_size"] == "integral"])
+#print(data_final[data_final["pizza_size"] == "integral"])
 
 #y cambiamos el nombre de la columna
 data_final = data_final.rename(columns={"pizza_size": "tipo_masa"})
@@ -70,8 +70,8 @@ data_final["pizza_category"] = data_final["pizza_category"].replace({"Classic": 
 data_final = data_final.rename(columns={"pizza_category": "salsa_base"})
 #print(data_final["salsa_base"].head())
 
-
+#print(data_final.shape)
 
 '''------Exportar datos-------'''
 #guardamos el data final en un csv en la carpeta data
-#data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/Ejercicio 2/data/data_final.csv", sep=";", encoding='ISO-8859-1')
+data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/Ejercicio 2/data/data_final.csv", sep=";", encoding='utf-8', index=True)
