@@ -368,7 +368,7 @@ Control Centralizado:
 La clase Director ofrece un punto centralizado de control sobre el proceso de construcción de pizzas. Esto simplifica la interacción con el patrón Builder, permitiendo a la aplicación principal construir pizzas personalizadas sin necesidad de conocer los detalles internos de la construcción.
 
 ### Código
-Tenemos varios ficheros para crear nuestra pizzeria. Primero he utilizado un dataset de Keaggle "Data-Model-Pizza.csv" al cual le he hecho cambios y limpieza para poder usarlo en mi builder. El data liimpio lo hemos guardado en un csv en la carpeta data "data_final".
+Tenemos varios ficheros para crear nuestra pizzeria. Primero he utilizado un dataset de Keaggle: ["Data-Model-Pizza.csv"](https://www.kaggle.com/datasets/shilongzhuang/pizza-sales) al cual le he hecho cambios y limpieza para poder usarlo en mi builder. El data liimpio lo hemos guardado en un csv en la carpeta data "data_final".
 
 #### limpieza.py
 ```
