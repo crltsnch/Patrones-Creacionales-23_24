@@ -88,6 +88,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             self.produce_masa()
         else:
             self._pizza.add(f"Tipo de Masa: {masa_escogida}")
+            return masa_escogida
 
         
     def produce_salsa(self) -> None:
@@ -98,7 +99,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             self.produce_salsa()
         else:
             self._pizza.add(f"Salsa Base: {salsa_escogida}")
-        
+            return salsa_escogida
 
     def produce_ingredientes(self) -> None:
         ingredientes = []
@@ -148,7 +149,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             else:
                 self._pizza.add(f"Técnica de Cocción: {coccion}")
 
-        else:
+        elif masa_escogida == "integral" or masa_escogida == "sin gluten":
             coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegigo masa {masa_escogida} te recomendamos horno convencional: ")
             if coccion not in tecnicas:
                 print("No tenemos esa técnica de cocción, por favor elige otra")
