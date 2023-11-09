@@ -51,7 +51,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             print("No tenemos esa masa, por favor elige otra")
             self.produce_masa()
         else:
-            self._pizza.add(f"Tipo de Masa: {masa_escogida}")
+            self._pizza.add(masa_escogida)
             return masa_escogida
 
         
@@ -63,7 +63,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             print("No tenemos esa salsa, por favor elige otra")
             self.produce_salsa()
         else:
-            self._pizza.add(f"Salsa Base: {salsa_escogida}")
+            self._pizza.add(salsa_escogida)
             return salsa_escogida
 
     def produce_ingredientes(self) -> None:
@@ -94,7 +94,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
         ingrediente4 = input(f"Ingrese el cuarto ingrediente que desees, te recomendamos {ingredientes4_sin_nan}: ")
         ingredientes.append(ingrediente4)
 
-        self._pizza.add(f"Ingredientes: {ingredientes}")
+        self._pizza.add(f"{ingredientes}")
     
     def produce_coccion(self, masa_escogida: str) -> None:
         tecnicas = ["horno de leña", "horno convencional", "parrilla"]
@@ -106,7 +106,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos esa técnica de cocción, por favor elige otra")
                 self.produce_coccion(masa_escogida)
             else:
-                self._pizza.add(f"Técnica de Cocción: {coccion}")
+                self._pizza.add(coccion)
 
         elif masa_escogida == "gruesa" or masa_escogida == "rellena de queso":
             coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa gruesa, te recomendamos parrilla: ")
@@ -115,7 +115,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos esa técnica de cocción, por favor elige otra")
                 self.produce_coccion(masa_escogida)
             else:
-                self._pizza.add(f"Técnica de Cocción: {coccion}")
+                self._pizza.add(coccion)
         
 
         elif masa_escogida == "integral" or masa_escogida == "sin gluten":
@@ -125,7 +125,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos esa técnica de cocción, por favor elige otra")
                 self.produce_coccion(masa_escogida)
             else:
-                self._pizza.add(f"Técnica de Cocción: {coccion}")
+                self._pizza.add(coccion)
     
     def produce_presentacion(self) -> None:
         presentaciones = ["estilo clasico", "estilo mediterraneo", "estilo moderno"]
@@ -135,7 +135,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             print("No tenemos esa presentación, por favor elige otra")
             self.produce_presentacion()
         else:
-            self._pizza.add(f"Presentación: {presentacion}")
+            self._pizza.add(presentacion)
 
     def produce_maridaje(self, salsa_escogida: str) -> None:
         maridajes = ["Garnacha", "Chardonnay", "Viura", "Albariño", "cerveza de trigo", "cerveza rubia", "cerveza tostada", "cerveza con limon", "limonada casera", "agua con gas", "agua", "cola", "leche"]
@@ -148,7 +148,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos ese maridaje, por favor elige otro")
                 self.produce_maridaje(salsa_escogida)
             else:
-                self._pizza.add(f"Maridaje: {maridaje}")
+                self._pizza.add(maridaje)
 
         elif salsa_escogida == "pesto":
             maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa de pesto, te recomendamos un Chardonnay, una cerveza rubia o agua con gas: ")
@@ -157,7 +157,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos ese maridaje, por favor elige otro")
                 self.produce_maridaje(salsa_escogida)
             else:
-                self._pizza.add(f"Maridaje: {maridaje}")
+                self._pizza.add(maridaje)
 
         elif salsa_escogida == "salsa blanca":
             maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa blanca, te recomendamos un Viura, una cerveza tostada o cola: ")
@@ -166,7 +166,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos ese maridaje, por favor elige otro")
                 self.produce_maridaje(salsa_escogida)
             else:
-                self._pizza.add(f"Maridaje: {maridaje}")
+                self._pizza.add(maridaje)
         
         else:
             maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa picante, te recomendamos un Albariño, una cerveza con limon o leche: ")
@@ -175,7 +175,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 print("No tenemos ese maridaje, por favor elige otro")
                 self.produce_maridaje(salsa_escogida)
             else:
-                self._pizza.add(f"Maridaje: {maridaje}")
+                self._pizza.add(maridaje)
 
     
     def produce_extras(self) -> None:
@@ -186,4 +186,4 @@ class ConcretePizzaBuilder(PizzaBuilder):
             print("No tenemos ese extra, por favor elige otro")
             self.produce_extras()
         else:
-            self._pizza.add(f"Extra y finalización: {extra}")
+            self._pizza.add(extra)
