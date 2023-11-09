@@ -118,12 +118,13 @@ class ConcretePizzaBuilder(PizzaBuilder):
         ingredientes.append(ingrediente2)
 
         ingredientes3 = data[data["ingrediente1"] == ingrediente1]["ingrediente3"].unique()
-        
-        ingrediente3 = input(f"Ingrese el tercer ingrediente que desees, te recomendamos {ingredientes3}: ")
+        ingredientes3_sin_nan = [ingrediente for ingrediente in ingredientes3 if not pd.isna(ingrediente)]
+        ingrediente3 = input(f"Ingrese el tercer ingrediente que desees, te recomendamos {ingredientes3_sin_nan}: ")
         ingredientes.append(ingrediente3)
 
         ingredientes4 = data[data["ingrediente1"] == ingrediente1]["ingrediente4"].unique()
-        ingrediente4 = input(f"Ingrese el cuarto ingrediente que desees, te recomendamos {ingredientes4}: ")
+        ingredientes4_sin_nan = [ingrediente for ingrediente in ingredientes4 if not pd.isna(ingrediente)]
+        ingrediente4 = input(f"Ingrese el cuarto ingrediente que desees, te recomendamos {ingredientes4_sin_nan}: ")
         ingredientes.append(ingrediente4)
 
         self._pizza.add(f"Ingredientes: {ingredientes}")
