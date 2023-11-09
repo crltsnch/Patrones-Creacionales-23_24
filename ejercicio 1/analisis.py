@@ -29,8 +29,9 @@ Concrete Products are created by corresponding Concrete Factories.
 
 class Media(AbstractAnalisis):
     def calcular_media(self):
-        media = data.groupby(data['FECHA'].dt.date)['Unnamed: 0'].mean()
-        return f"La media de la fecha de inicio de las actividades es: {media}" 
+        activaciones_por_dia = data.groupby(data['FECHA']).size()
+        media = activaciones_por_dia.mean()
+        return f"La media de activaciones por dia es: {media}" 
 
     def calcular_mediana(self):
         pass
