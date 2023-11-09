@@ -135,7 +135,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
         self._pizza.add(f"Ingredientes: {ingredientes}")
     
     def produce_coccion(self, masa_escogida: str) -> None:
-        tecnicas = ["Horno de leña", "Horno convencional", "Parrilla"]
+        tecnicas = ["horno de leña", "horno convencional", "parrilla"]
 
         if masa_escogida == "fina":
             coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa fina, te recomendamos horno de leña: ")
@@ -171,7 +171,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             self._pizza.add(f"Presentación: {presentacion}")
 
     def produce_maridaje(self, salsa_escogida: str) -> None:
-        maridajes = ["garnacha", "chardonnay", "viura", "albariño", "cerveza de trigo", "cerveza rubia", "cerveza tostada", "cerveza con limon", "limonada casera", "agua con gas", "agua", "cola", "leche"]
+        maridajes = ["Garnacha", "Chardonnay", "Viura", "Albariño", "cerveza de trigo", "cerveza rubia", "cerveza tostada", "cerveza con limon", "limonada casera", "agua con gas", "agua", "cola", "leche"]
         print(f"Nuestra seleccion de maridajes es {maridajes}")
 
         if salsa_escogida == "tomate":
