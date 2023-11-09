@@ -312,7 +312,141 @@ La mediana de la columna fecha es: 2023-10-02 00:00:00
 La moda de la columna tipo es: ActividadesDeportivas, CarrerasMaratones
 ```
 
-Y las dos gráficas:
+Y las dos gráficas: histogramas por activacion y gráfico de barras por tipo de actividades.
+
+## Ejercicio 2: Sistema Integral de Creación y Gestión de Pizzas Gourmet con Almacenamiento en CSV utilizando el Patrón Builder
+La cadena de pizzerías gourmet "Delizioso" está desarrollando una plataforma digital que permitirá a los clientes personalizar sus pizzas con gran detalle. Las características clave incluyen una amplia variedad de opciones: tipo de masa, salsa base, ingredientes, técnicas de cocción, presentación, maridajes recomendados y extras. El objetivo del proyecto es:
+
+- Diseñar un sistema utilizando el patrón Builder que permita a los clientes crear sus pizzas paso a paso.
+
+- Validar cada elección del cliente para asegurarse de que sea compatible con las selecciones anteriores.
+
+- Implementar un sistema de recomendaciones basado en las elecciones anteriores del cliente.
+
+- Desarrollar un módulo que guarde los detalles de cada pizza personalizada en un archivo CSV.
+
+- Crear una funcionalidad que permita leer el archivo CSV y reconstruir la pizza para su visualización, edición o reorden.
+
+- Mantener la flexibilidad del sistema para futuras actualizaciones y modificaciones.
+
+- Diseñar una interfaz de usuario amigable que guíe a los clientes en el proceso de creación y proporcione información relevante.
+
+- Implementar medidas de seguridad para proteger la integridad de los datos y la privacidad de las elecciones de los clientes.
+
+El uso del patrón Builder permite construir pizzas personalizadas de manera robusta y adaptable, lo que ofrece ventajas significativas en comparación con otros enfoques. 
+
+#### Justificación del Diseño y Uso del Patrón Builder en la Aplicación de Creación de Pizzas
+
+El patrón Builder es una solución de diseño fundamental en la creación de objetos complejos y altamente configurables, y se ha implementado con éxito en nuestra aplicación de creación de pizzas. A continuación, se proporciona una justificación detallada de cómo este patrón mejora la estructura y la flexibilidad de la aplicación:
+
+Separación de Construcción y Representación:
+
+El patrón Builder ha sido implementado en nuestra aplicación para separar claramente el proceso de construcción de pizzas de su representación final. Esto permite una construcción modular y coherente de pizzas personalizadas, evitando la necesidad de modificar la lógica de construcción principal para cada variante de pizza.
+
+Configurabilidad Personalizada:
+
+En el negocio de las pizzerías, la capacidad de configurar cada aspecto de una pizza (masa, salsa, ingredientes, cocción, presentación, maridaje y extras) es esencial para satisfacer las preferencias de los clientes. El patrón Builder ofrece una interfaz clara y coherente que permite a los clientes definir sus pizzas exactamente como desean.
+
+Reusabilidad del Código:
+
+La implementación del patrón Builder fomenta la reutilización del código. La lógica de construcción de pizza se encuentra en la clase PizzaBuilder, lo que significa que podemos crear múltiples instancias de constructores de pizza sin duplicar código. Esto mejora la calidad del código y reduce la posibilidad de errores.
+
+Claridad y Mantenibilidad:
+
+Cada paso del proceso de construcción se refleja en métodos descriptivos en el PizzaBuilder. Esto facilita la comprensión del código, lo que es beneficioso tanto para el desarrollador que trabaja en el código como para el mantenimiento futuro. La claridad del patrón Builder también facilita la colaboración en equipos de desarrollo.
+
+Flexibilidad y Extensibilidad:
+
+En un mercado en constante evolución, es esencial poder adaptar nuestra oferta de pizzas. El patrón Builder permite la introducción de nuevos tipos de masa, salsas, ingredientes y otras configuraciones con facilidad, sin impactar el código existente. Esto promueve la extensibilidad de la aplicación.
+
+Creación de Objetos Complejos:
+
+Las pizzas son objetos complejos con múltiples componentes. El patrón Builder garantiza que cada pizza esté en un estado válido en todo momento, evitando la creación de pizzas incompletas o incorrectas. Esto es crucial para mantener la calidad de nuestros productos.
+
+Control Centralizado:
+
+La clase Director ofrece un punto centralizado de control sobre el proceso de construcción de pizzas. Esto simplifica la interacción con el patrón Builder, permitiendo a la aplicación principal construir pizzas personalizadas sin necesidad de conocer los detalles internos de la construcción.
+
+### Código
+Tenemos varios ficheros para crear nuestra pizzeria. Primero he utilizado un dataset de Keaggle "Data-Model-Pizza.csv" al cual le he hecho cambios y limpieza para poder usarlo en mi builder. El data liimpio lo hemos guardado en un csv en la carpeta data "data_final".
+
+#### limpieza.py
+```
+import pandas as pd
+
+data = pd.read_csv('/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/Ejercicio 2/data/Data-Model-Pizza-Sales.csv')
+#print(data.head())
 
 
+'''------Limpieza de datos-------'''
 
+#Eliminamos columnas que no me sirven
+colum_eliminar = ["unit_price", "total_price", "order_id", "quantity", "order_details_id"]
+data_final = data.drop(colum_eliminar, axis=1)
+
+#print(data_final.head())
+
+#Filas tienen valores nulos
+#print(data_final.isnull().sum())
+#No hay valores nulos
+
+
+'''------Transformación de datos-------'''
+
+'''Ingredientes'''
+#Quiero saber los ingredientes diferentes que hay en la columna "ingredientes"
+ingredientes_divididos = data_final["pizza_ingredients"].str.split(",", expand=True)
+
+#Renombrar la soclumnas con nombres como ingrediente1
+colum_names = [f"ingrediente{i+1}" for i in range(len(ingredientes_divididos.columns))]
+ingredientes_divididos.columns = colum_names
+
+#Añadir las columnas de ingredientes a data_final
+data_final = pd.concat([data_final, ingredientes_divididos], axis=1)
+
+#Eliminar la columna pizza_ingredients
+data_final = data_final.drop("pizza_ingredients", axis=1)
+#print(data_final.head())
+
+
+#Ahora volvemos a comprobar si hay valores nulos
+#print(data_final.isnull().sum())
+#Hay valores nulos, pero no nos importa a la hora de recomendar ingredientes
+
+#que ingredientes hay en cada columna
+#print(data_final["ingrediente1"].unique())
+
+
+'''Masas'''
+#Tipos de tamaños de pizza
+#print(data_final["pizza_size"].unique())
+
+#Ahora vamos a transformar la columna tamaño por tipos de masas, de esta manera tendremos que el tamaño S es una masa fina, el tamaño M es una masa gruesa y el tamaño L es una masa rellena de queso
+data_final["pizza_size"] = data_final["pizza_size"].replace({"S": "fina", "M": "gruesa", "L": "rellena de queso", "XL": "integral", "XXL": "sin gluten"})
+#print(data_final["pizza_size"].unique())
+
+#imprimeme solo las filas que tengas masa integral
+#print(data_final[data_final["pizza_size"] == "integral"])
+
+#y cambiamos el nombre de la columna
+data_final = data_final.rename(columns={"pizza_size": "tipo_masa"})
+#print(data_final["tipo_masa"].head())
+
+'''Salsas'''
+#Hacemos el mismo proceso de transformación con la columna pizza_category
+#print(data_final["pizza_category"].unique())
+
+#Transformamos la columna por salsa_base, teniendo que classic es tomate, veggie es pesto, supreme es salsa blanca y chicken es salsa picante
+data_final["pizza_category"] = data_final["pizza_category"].replace({"Classic": "tomate", "Veggie": "pesto", "Supreme": "salsa blanca", "Chicken": "salsa picante"})
+#print(data_final["pizza_category"].unique())
+
+#y cambiamos el nombre de la columna
+data_final = data_final.rename(columns={"pizza_category": "salsa_base"})
+#print(data_final["salsa_base"].head())
+
+#print(data_final.shape)
+
+'''------Exportar datos-------'''
+#guardamos el data final en un csv en la carpeta data
+data_final.to_csv("/Users/carlotasanchezgonzalez/Documents/class/Patrones-Creacionales-23_24/Ejercicio 2/data/data_final.csv", sep=";", encoding='utf-8', index=True)
+```
