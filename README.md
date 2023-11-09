@@ -313,6 +313,10 @@ La moda de la columna tipo es: ActividadesDeportivas, CarrerasMaratones
 ```
 
 Y las dos gráficas: histogramas por activacion y gráfico de barras por tipo de actividades.
+![histograma](https://github.com/crltsnch/Patrones-Creacionales-23_24/assets/91721777/1f6ea96b-f8fc-431a-8fa7-0f53e598c045)
+
+![grafico_de_barras](https://github.com/crltsnch/Patrones-Creacionales-23_24/assets/91721777/d1911b1e-8368-41ef-8316-8ce38f230944)
+
 
 ## Ejercicio 2: Sistema Integral de Creación y Gestión de Pizzas Gourmet con Almacenamiento en CSV utilizando el Patrón Builder
 La cadena de pizzerías gourmet "Delizioso" está desarrollando una plataforma digital que permitirá a los clientes personalizar sus pizzas con gran detalle. Las características clave incluyen una amplia variedad de opciones: tipo de masa, salsa base, ingredientes, técnicas de cocción, presentación, maridajes recomendados y extras. El objetivo del proyecto es:
