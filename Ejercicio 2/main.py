@@ -131,6 +131,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
     
     def produce_coccion(self, masa_escogida: str) -> None:
         tecnicas = ["Horno de leña", "Horno convencional", "Parrilla"]
+
         if masa_escogida == "fina":
             coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa fina, te recomendamos horno de leña: ")
             if coccion not in tecnicas:
@@ -156,8 +157,41 @@ class ConcretePizzaBuilder(PizzaBuilder):
                 self._pizza.add(f"Técnica de Cocción: {coccion}")
     
     def produce_maridaje(self, salsa_escogida: str) -> None:
-        maridajes = ["Garnacha", "Chardonnay"]
-        self._pizza.add("Maridaje")
+        maridajes = ["garnacha", "chardonnay", "viura", "albariño", "cerveza de trigo", "cerveza rubia", "cerveza tostada", "cerveza con limon", "limonada casera", "agua con gas", "agua", "cola", "leche"]
+        print(f"Nuestra seleccion de maridajes es {maridajes}")
+
+        if salsa_escogida == "tomate":
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa de tomate, te recomendamos un Garnacha, cerveza de trigo o nuestra limonada casera: ")
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(f"Maridaje: {maridaje}")
+
+        elif salsa_escogida == "pesto":
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa de pesto, te recomendamos un Chardonnay, una cerveza rubia o agua con gas: ")
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(f"Maridaje: {maridaje}")
+
+        elif salsa_escogida == "salsa blanca":
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa blanca, te recomendamos un Viura, una cerveza tostada o cola: ")
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(f"Maridaje: {maridaje}")
+        
+        else:
+            maridaje = input(f"Ingrese el maridaje que deseas, como has elegido salsa picante, te recomendamos un Albariño, una cerveza con limon o leche: ")
+            if maridaje not in maridajes:
+                print("No tenemos ese maridaje, por favor elige otro")
+                self.produce_maridaje(salsa_escogida)
+            else:
+                self._pizza.add(f"Maridaje: {maridaje}")
+
     
     def produce_extras(self) -> None:
         self._pizza.add("Extra y finalización")
