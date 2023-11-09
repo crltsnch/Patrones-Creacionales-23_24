@@ -34,6 +34,10 @@ class PizzaBuilder(ABC):
         pass
 
     @abstractmethod
+    def produce_presentacion(self) -> None:
+        pass
+
+    @abstractmethod
     def produce_maridaje(self) -> None:
         pass
 
@@ -157,6 +161,15 @@ class ConcretePizzaBuilder(PizzaBuilder):
             else:
                 self._pizza.add(f"Técnica de Cocción: {coccion}")
     
+    def produce_presentacion(self) -> None:
+        presentaciones = ["estilo clasico", "estilo mediterraneo", "estilo moderno"]
+        presentacion = input(f"Ingrese la presentación que deseas {presentaciones}: ")
+        if presentacion not in presentaciones:
+            print("No tenemos esa presentación, por favor elige otra")
+            self.produce_presentacion()
+        else:
+            self._pizza.add(f"Presentación: {presentacion}")
+
     def produce_maridaje(self, salsa_escogida: str) -> None:
         maridajes = ["garnacha", "chardonnay", "viura", "albariño", "cerveza de trigo", "cerveza rubia", "cerveza tostada", "cerveza con limon", "limonada casera", "agua con gas", "agua", "cola", "leche"]
         print(f"Nuestra seleccion de maridajes es {maridajes}")
@@ -257,7 +270,8 @@ class Director:
         masa_escogida = self.builder.produce_masa()
         salsa_escogida = self.builder.produce_salsa()
         self.builder.produce_ingredientes()
-        self.builder.produce_coccion(masa_escogida)    #le pasamos la masa escogida para hacer uso de en la funcion coccion para que nos recomiende la técnica de cocción
+        self.builder.produce_coccion(masa_escogida)   #le pasamos la masa escogida para hacer uso de en la funcion coccion para que nos recomiende la técnica de cocción
+        self.builder.produce_presentacion()
         self.builder.produce_maridaje(salsa_escogida)
         self.builder.produce_extras()
 
@@ -281,6 +295,7 @@ if __name__ == "__main__":
     builder.produce_salsa()
     builder.produce_ingredientes()
     builder.produce_coccion()
+    builder.produce_presentacion()
     builder.produce_maridaje()
     builder.produce_extras()
     builder.pizza.list_parts()'''
