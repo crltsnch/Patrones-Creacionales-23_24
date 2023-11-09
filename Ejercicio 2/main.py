@@ -88,6 +88,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             self.produce_masa()
         else:
             self._pizza.add(f"Tipo de Masa: {masa_escogida}")
+            return masa_escogida
 
         
     def produce_salsa(self) -> None:
@@ -112,7 +113,7 @@ class ConcretePizzaBuilder(PizzaBuilder):
             ingredientes.append(ingrediente1)
             
 
-        #queremos pedile 3 ingredientes mas, recomendandole los ingredientes de la misma fila que le ingrediente1 escogido
+        #queremos pedile 3 ingredientes mas, recomendandole los ingredientes de las mismas filas que el ingrediente1 escogido
         ingredientes2 = data[data["ingrediente1"] == ingrediente1]["ingrediente2"].unique()
         ingrediente2 = input(f"Ingrese el segundo ingrediente que desees, te recomendamos {ingredientes2}: ")
         ingredientes.append(ingrediente2)
@@ -129,10 +130,31 @@ class ConcretePizzaBuilder(PizzaBuilder):
 
         self._pizza.add(f"Ingredientes: {ingredientes}")
     
-    def produce_coccion(self) -> None:
+    def produce_coccion(self, masa_escogida: str) -> None:
         tecnicas = ["Horno de leña", "Horno convencional", "Parrilla"]
-        coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}: ")
-        self._pizza.add(f"Técnica de Cocción: {coccion}")
+        if masa_escogida == "fina":
+            coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa fina, te recomendamos horno de leña: ")
+            if coccion not in tecnicas:
+                print("No tenemos esa técnica de cocción, por favor elige otra")
+                self.produce_coccion(masa_escogida)
+            else:
+                self._pizza.add(f"Técnica de Cocción: {coccion}")
+
+        elif masa_escogida == "gruesa":
+            coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegido masa gruesa, te recomendamos parrilla: ")
+            if coccion not in tecnicas:
+                print("No tenemos esa técnica de cocción, por favor elige otra")
+                self.produce_coccion(masa_escogida)
+            else:
+                self._pizza.add(f"Técnica de Cocción: {coccion}")
+
+        else:
+            coccion = input(f"Ingrese la técnica de cocción que deseas {tecnicas}, como has elegigo masa {masa_escogida} te recomendamos horno convencional: ")
+            if coccion not in tecnicas:
+                print("No tenemos esa técnica de cocción, por favor elige otra")
+                self.produce_coccion(masa_escogida)
+            else:
+                self._pizza.add(f"Técnica de Cocción: {coccion}")
     
     def produce_maridaje(self) -> None:
 
@@ -192,10 +214,10 @@ class Director:
     """
 
     def build_pizza(self) -> None:
-        self.builder.produce_masa()
+        masa_escogida = self.builder.produce_masa()
         self.builder.produce_salsa()
         self.builder.produce_ingredientes()
-        self.builder.produce_coccion()
+        self.builder.produce_coccion(masa_escogida)    #le pasamos la masa escogida para hacer uso de en la funcion coccion para que nos recomiende la técnica de cocción
         self.builder.produce_maridaje()
         self.builder.produce_extras()
 
