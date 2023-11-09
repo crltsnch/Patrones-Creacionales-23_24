@@ -92,11 +92,16 @@ class ConcretePizzaBuilder(PizzaBuilder):
         
     def produce_salsa(self) -> None:
         salsas = data["salsa_base"].unique()
-
-        self._pizza.add("Salsa Base")
+        salsa_escogida = input(f"Elige el tipo de salsa que deseas entre {salsas}:")
+        if salsa_escogida not in salsas:
+            print("No tenemos esa salsa, por favor elige otra")
+            self.produce_salsa()
+        else:
+            self._pizza.add(f"Salsa Base: {salsa_escogida}")
+        
 
     def produce_ingredientes(self) -> None:
-        ingredientes = input("Ingrese los ingredientes (separados por comas): ")
+        ingrediente1 = input("Ingrese un ingrediente que desees (separados por comas): ")
         self._pizza.add(f"Ingredientes: {ingredientes}")
     
     def produce_coccion(self) -> None:
