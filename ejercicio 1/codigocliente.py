@@ -12,9 +12,16 @@ def client_code(factory: SamurAbstractFactory) -> None:
     
     if analisis is not None:
         for a in analisis:
-            print(f"{a.calcular_media()}\n", end="")
-            print(f"{a.calcular_mediana()}\n", end="")
-            print(f"{a.calcular_moda()}\n", end="")
+            resultado = a.calcular_media()
+            if resultado is not None:
+                print(resultado)
+            resultado = a.calcular_mediana()
+            if resultado is not None:
+                print(resultado)
+            resultado = a.calcular_moda()
+            if resultado is not None:
+                print(resultado)
+
     
     if visualizacion is not None:
         for v in visualizacion:
