@@ -270,9 +270,9 @@ class Director:
         masa_escogida = self.builder.produce_masa()
         salsa_escogida = self.builder.produce_salsa()
         self.builder.produce_ingredientes()
-        self.builder.produce_coccion(masa_escogida)   #le pasamos la masa escogida para hacer uso de en la funcion coccion para que nos recomiende la técnica de cocción
+        self.builder.produce_coccion(masa_escogida)   #le pasamos la masa escogida para hacer uso en la funcion coccion para que nos recomiende la técnica de cocción
         self.builder.produce_presentacion()
-        self.builder.produce_maridaje(salsa_escogida)
+        self.builder.produce_maridaje(salsa_escogida)  #le pasamos la salsa escogida para hacer uso en la funcion maridaje de la salsa base escogida
         self.builder.produce_extras()
 
 if __name__ == "__main__":
